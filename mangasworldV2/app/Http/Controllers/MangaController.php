@@ -7,8 +7,8 @@
    use App\Models\Dessinateur;
    use App\Models\Scenariste;
    use Exception;
-  
-  
+
+
 
    class MangaController extends Controller{
          /**
@@ -62,11 +62,28 @@
          // Afficher le Formulaire en lui fournissant les données à afficher
          return view ('formManga', compact('manga', 'genres', 'dessinateurs', 'scenaristes', 'titreVue', 'erreur')); 
       }
+      // ====================(LARAVEL 5 P14)===================
+
+      public function  addManga($erreur=""){
+
+         $manga         = new Manga;
+         $genres        = Genre::all();
+         $dessinateurs  = Dessinateur::all();
+         $scenaristes   = Scenariste::all();
+         $titreVue      = "Ajout d'un Manga";
+          // Afficher le Formulaire en lui fournissant les données à afficher
+         return view ('formManga', compact('manga', 'genres', 'dessinateurs', 'scenaristes', 'titreVue', 'erreur'));           
+      }
 
       // ====================(LARAVEL 5 P11 & 12)===================
 
       public function validateManga(){
-         
+         // if ($id_manga > 0) {
+         //    $manga = Manga::find($id_manga)
+         // } else {
+         //    $manga = new Manga();
+         // }
+         // $id_manga = $Request->input('id_manga');
          // Récupérer des Valeurs Saisies
          $id_manga         = Request::input('id_manga');       //id dans champs caché
          $id_dessinateur   = Request::input('cbDessinateur');  //List déroulante
@@ -75,17 +92,15 @@
          $titre            = Request::input('titre');
          $id_genre         = Request::input('cbGenre');        //List déroulante
 
-         $id_manga = $Request->input('id_manga');
-     
-      // if (Request::hasFile('couverture')) {
+      if (Request::hasFile('couverture')) {
             
-      //       $image = Request::file('couverture');
-      //       $couverture = $image -> getClientOriginalName();
-      //       Request::file('couverture') -> move(base_path().'/public/images/', $couverture);
+            $image = Request::file('couverture');
+            $couverture = $image -> getClientOriginalName();
+            Request::file('couverture') -> move(base_path().'/public/images/', $couverture);
             
-      //    } else {
-      //       $couverture = Request::input('couvertureHidden');
-      //    }
+         } else {
+            $couverture = Request::input('couvertureHidden');
+         }
          $manga = Manga::find($id_manga);
          $manga -> titre         = $titre;
          $manga -> couverture    = $couverture;

@@ -24,3 +24,4 @@ Route::get('/listerGenres/{erreur?}', 'App\Http\Controllers\GenreController@getG
 Route::post('/listerMangasGenre', 'App\Http\Controllers\MangaController@getMangasGenre');
 Route::get('/modifierManga/{id}/{erreur?}', 'App\Http\Controllers\MangaController@updateManga');
 Route::post('/validerManga', 'App\Http\Controllers\MangaController@validateManga');
+Route::get('/ajouterManga/{erreur?}', 'App\Http\Controllers\MangaController@addManga');
