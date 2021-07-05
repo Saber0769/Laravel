@@ -78,17 +78,13 @@
       // ====================(LARAVEL 5 P11 & 12)===================
 
       public function validateManga(){
-         // if ($id_manga > 0) {
-         //    $manga = Manga::find($id_manga)
-         // } else {
-         //    $manga = new Manga();
-         // }
-         // $id_manga = $Request->input('id_manga');
+         // id dans le champs caché
+         $id_manga = $Request->input('id_manga');
          // Récupérer des Valeurs Saisies
-         $id_manga         = Request::input('id_manga');       //id dans champs caché
+         // $id_manga         = Request::input('id_manga');       //id dans champs caché
          $id_dessinateur   = Request::input('cbDessinateur');  //List déroulante
          $prix             = Request::input('prix'); 
-         $id_scenariste    = Request::input('cbScenariste');  //List déroulante
+         $id_scenariste    = Request::input('cbScenariste');   //List déroulante
          $titre            = Request::input('titre');
          $id_genre         = Request::input('cbGenre');        //List déroulante
 
