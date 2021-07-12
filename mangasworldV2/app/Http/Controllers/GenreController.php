@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use Session;
-use GuzzleHttp\Client;
+
 
 
 class GenreController extends Controller{
@@ -27,7 +27,9 @@ class GenreController extends Controller{
      * Récupère la liste des genres 
      * @return Collection de Genre
      */
-    public function getGenres($erreur="") {
+    public function getGenres() {
+        $erreur = Session::get('erreur');
+        Session::forget('erreur');
         $genres = Genre::all();
             return view('formGenre', compact('genres', 'erreur'));
     }

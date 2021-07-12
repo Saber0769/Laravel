@@ -20,8 +20,12 @@ Route::get('/', function () {
 Route::get('/listerMangas',[MangaController::class, 'getMangas']);
 Route::get('/listerMangas', 'App\Http\Controllers\MangaController@getMangas');
 /* Route::get('/listerMangasGenre/{idGenre}', 'App\Http\Controllers\MangaController@getMangasGenre'); Check laravel 5 P4*/
-Route::get('/listerGenres/{erreur?}', 'App\Http\Controllers\GenreController@getGenres');
+Route::get('/listerGenres', 'App\Http\Controllers\GenreController@getGenres');
 Route::post('/listerMangasGenre', 'App\Http\Controllers\MangaController@getMangasGenre');
-Route::get('/modifierManga/{id}/{erreur?}', 'App\Http\Controllers\MangaController@updateManga');
+Route::get('/modifierManga/{id}', 'App\Http\Controllers\MangaController@updateManga');
 Route::post('/validerManga', 'App\Http\Controllers\MangaController@validateManga');
-Route::get('/ajouterManga/{erreur?}', 'App\Http\Controllers\MangaController@addManga');
+Route::get('/ajouterManga', 'App\Http\Controllers\MangaController@addManga');
+//Route::get('/supprimerManga/{id}','App\Http\Controllers\MangaController@deleteManga');
+
+// =============== test =====================
+// Route::get('/supprimerManga/{id}', 'App\Http\Controllers\MangaController@deleteManga')->middleware('autorise');

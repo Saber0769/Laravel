@@ -6,15 +6,22 @@
 {{-- Lorsqu'on cliquera sur le bouton Valider ce sera la route validerManga qui sera invoquée. Pour le moment nous laisserons de côté le paramètre files. --}}
 {!! Form::open(['url' => 'validerManga', 'file' => true]) !!}
 <div class="col-md-12 well well-sm">
-    <center><h1>Modifer un Genre</h1></center>
+    <center><h1>Modifier un Genre</h1></center>
     <div class="form-horizontal">    
         <div class="form-group">
             <input type="hidden" name="id_manga" value="{{$manga->id_manga}}"/>
             <label class="col-md-3 control-label">Titre : </label>
             <div class="col-md-3">
-                <input type="text" name="titre" 
-                    value="{{$manga->titre}}" class="form-control" required autofocus>
+          
+                    {{Form::text("titre", old("titre") ? old("titre") : (!empty($manga) ? $manga->titre : null),
+                    [ "class" => "form-control", "placeholder" => "Titre", "required", "autofocus"])
+                }}                     
             </div>
+            @error('titre')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror  
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">Genre : </label>

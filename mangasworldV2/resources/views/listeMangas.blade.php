@@ -30,12 +30,15 @@
             <td style="text-align:center;">
                 <a class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="Supprimer" href="#"
                     onclick="javascript:if (confirm('Suppression confirmée ?'))
-                        { window.location = '{{url('/supprimerManga')}}/{{$manga-> id_manga }}';}">
+                        { window.location = '{{url('/supprimerManga')}}/{{$manga->id_manga }}';}">
                 </a>
             </td>            
         </tr>
         @endforeach
         <BR> <BR>
     </table>
-    
+    <div class="col-md-6 col-md-offset-3">
+        @include('error')
+    </div>
+</div>
 @stop
