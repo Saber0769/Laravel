@@ -8,12 +8,12 @@ use Session;
 
 
 class GenreController extends Controller{
-    
+
         /**
-     * Récupère la liste des genres 
+     * Récupère la liste des genres
      * @return la vue formGenre
      */
-     public function getFormGenres() {
+    public function getFormGenres() {
         $erreur = Session::get('erreur');
         Session::forget('erreur');
         $client = new Client();
@@ -22,9 +22,9 @@ class GenreController extends Controller{
         $genres = json_decode($response->getBody()->getContents());
         return view('formGenre', compact('genres', 'erreur'));
     }
-    
+
     /**
-     * Récupère la liste des genres 
+     * Récupère la liste des genres
      * @return Collection de Genre
      */
     public function getGenres() {
